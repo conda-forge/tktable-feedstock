@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/tktable-feedsto
 
 Home: http://www.tcl.tk/
 
-Package license: Tcl/Tk
+Package license: TCL
 
 Summary: Tktable is a 2D editable table widget
 
