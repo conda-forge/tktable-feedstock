@@ -1,4 +1,3 @@
-
 {% set version = "2.10" %}
 
 package:
@@ -11,7 +10,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -33,8 +32,7 @@ test:
 
 about:
   home: http://www.tcl.tk/
-  license: Tcl/Tk
-  license_family: BSD
+  license: TCL
   license_file: license.txt
   summary: Tktable is a 2D editable table widget
   doc_url: https://core.tcl.tk/jenglish/gutter/packages/tktable.html
