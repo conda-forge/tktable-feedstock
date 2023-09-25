@@ -7,6 +7,8 @@ package:
 source:
   url: http://downloads.sourceforge.net/project/tktable/tktable/{{ version }}/Tktable{{ version }}.tar.gz
   sha256: c335117fa1be45fe4d3032e96fd4b4641fff6a4f8467878608dabed11198a4cb
+  patches:
+    - 0001-MINGW-is-also-a-Windows-system.patch
 
 build:
   number: 4
