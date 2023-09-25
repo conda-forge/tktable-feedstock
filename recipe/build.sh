@@ -9,7 +9,6 @@ uname -s
             --with-tk=${PREFIX}/lib
 
 cat config.log
-cat confdefs.h
 
 make -j${CPU_COUNT}
 make install
