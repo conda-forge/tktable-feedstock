@@ -10,6 +10,7 @@ source:
 
 build:
   number: 5
+  skip: true  # [not win]
 
 requirements:
   build:
