@@ -1,0 +1,34 @@
+From 18fbc2c0d5517aef9586e4f6bc98fca154ff403b Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Mon, 25 Sep 2023 15:39:53 +0200
+Subject: [PATCH 2/3] Remove nologo flag
+
+---
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 4008301..c9a7b66 100755
+--- a/configure
++++ b/configure
+@@ -8171,7 +8171,7 @@ echo "$as_me: error: could not find PocketPC SDK or target compiler to enable Wi
+ 		    lflags="-nologo -MACHINE:${MACHINE} -LIBPATH:\"${MSSDK}/Lib/${MACHINE}\""
+ 		    LINKBIN="\"${PATH64}/link.exe\""
+ 		    CFLAGS_DEBUG="-nologo -Zi -Od -W3 ${runtime}d"
+-		    CFLAGS_OPTIMIZE="-nologo -O2 -W2 ${runtime}"
++		    CFLAGS_OPTIMIZE="-O2 -W2 ${runtime}"
+ 		    # Avoid 'unresolved external symbol __security_cookie'
+ 		    # errors, c.f. http://support.microsoft.com/?id=894573
+ 
+@@ -8228,7 +8228,7 @@ _ACEOF
+ 		    lflags="-nologo"
+     		    LINKBIN="link"
+ 		    CFLAGS_DEBUG="-nologo -Z7 -Od -W3 -WX ${runtime}d"
+-		    CFLAGS_OPTIMIZE="-nologo -O2 -W2 ${runtime}"
++		    CFLAGS_OPTIMIZE="-O2 -W2 ${runtime}"
+ 		fi
+ 	    fi
+ 
+-- 
+2.39.3 (Apple Git-145)
+
