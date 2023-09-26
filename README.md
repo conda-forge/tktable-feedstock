@@ -165,4 +165,5 @@ Feedstock Maintainers
 =====================
 
 * [@fhoehle](https://github.com/fhoehle/)
+* [@xhochy](https://github.com/xhochy/)
 
