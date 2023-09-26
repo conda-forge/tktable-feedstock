@@ -7,10 +7,11 @@ package:
 source:
   url: http://downloads.sourceforge.net/project/tktable/tktable/{{ version }}/Tktable{{ version }}.tar.gz
   sha256: c335117fa1be45fe4d3032e96fd4b4641fff6a4f8467878608dabed11198a4cb
+  patches:
+    - 0001-Remove-hardcoded-libs.patch
 
 build:
-  skip: True  # [win]
-  number: 4
+  number: 5
 
 requirements:
   build:
@@ -28,7 +29,7 @@ requirements:
 test:
   commands:
     - echo "if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}" | xvfb-run tclsh  # [linux]
-    - echo "if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}" | tclsh  # [osx]
+    - echo "if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}" | tclsh  # [not linux]
 
 about:
   home: http://www.tcl.tk/
@@ -40,3 +41,4 @@ about:
 extra:
   recipe-maintainers:
     - fhoehle
+    - xhochy
