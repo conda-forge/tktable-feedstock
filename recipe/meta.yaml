@@ -31,7 +31,8 @@ requirements:
 test:
   commands:
     - echo "exit [catch {package require -exact Tktable {{ version }} }]" | xvfb-run tclsh  # [linux]
-    - echo "exit [catch {package require -exact Tktable {{ version }} }]" | tclsh  # [not linux]
+    - echo "exit [catch {package require -exact Tktable {{ version }} }]" | tclsh  # [not (linux or win)]
+    - echo exit [catch {package require -exact Tktable {{ version }} }] | tclsh  # [win]
 
 about:
   home: http://www.tcl.tk/
