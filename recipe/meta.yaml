@@ -9,9 +9,10 @@ source:
   sha256: c335117fa1be45fe4d3032e96fd4b4641fff6a4f8467878608dabed11198a4cb
   patches:
     - 0001-Remove-hardcoded-libs.patch
+    - 0002-Fix-incompatible-function-pointer-types-add-CONST86.patch
 
 build:
-  number: 5
+  number: 6
 
 requirements:
   build:
