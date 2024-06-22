@@ -10,6 +10,7 @@ source:
   patches:
     - 0001-Remove-hardcoded-libs.patch
     - 0002-Fix-incompatible-function-pointer-types-add-CONST86.patch
+    - 0003-Fix-implicit-function-declaration-for-panic-on-macOS.patch
 
 build:
   number: 6
