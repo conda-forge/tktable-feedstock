@@ -17,7 +17,16 @@ if "%ARCH%"=="32" (
 )
 
 pushd win
-nmake -f makefile.vc libpath32="" CC=%CC% LD=link.exe TCL_VER=86 TCL_VERSION=8.6 DEST_DIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
+nmake -f makefile.vc ^
+  libpath32="" ^
+  CC=%CC% ^
+  LD=link.exe ^
+  TCL_VER=86 ^
+  TCL_VERSION=8.6 ^
+  DEST_DIR=%LIBRARY_PREFIX% ^
+  MACHINE=%MACHINE% ^
+  VERSION=$(PACKAGE_VERSION) ^
+  install
 if %ERRORLEVEL% GTR 0 exit 1
 popd
 

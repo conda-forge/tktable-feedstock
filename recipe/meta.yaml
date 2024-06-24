@@ -9,12 +9,15 @@ source:
   sha256: c335117fa1be45fe4d3032e96fd4b4641fff6a4f8467878608dabed11198a4cb
   patches:
     - 0001-Remove-hardcoded-libs.patch
+    - 0002-Fix-incompatible-function-pointer-types-add-CONST86.patch
+    - 0003-Fix-implicit-function-declaration-for-panic-on-macOS.patch
 
 build:
-  number: 5
+  number: 6
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
     - {{ cdt('libx11-devel') }}          # [linux]
@@ -28,8 +31,9 @@ requirements:
 
 test:
   commands:
-    - echo "if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}" | xvfb-run tclsh  # [linux]
-    - echo "if {[catch {package require -exact Tktable {{ version }}; exit 0}]} {exit 1}" | tclsh  # [not linux]
+    - echo "exit [catch {package require -exact Tktable {{ version }} }]" | xvfb-run tclsh  # [linux]
+    - echo "exit [catch {package require -exact Tktable {{ version }} }]" | tclsh  # [not (linux or win)]
+    - echo exit [catch {package require -exact Tktable {{ version }} }] | tclsh  # [win]
 
 about:
   home: http://www.tcl.tk/
