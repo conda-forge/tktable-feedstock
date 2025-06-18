@@ -13,7 +13,7 @@ source:
     - 0003-Fix-implicit-function-declaration-for-panic-on-macOS.patch
 
 build:
-  number: 6
+  number: 7
 
 requirements:
   build:
@@ -23,7 +23,7 @@ requirements:
     - {{ cdt('libx11-devel') }}          # [linux]
     - libxcb                             # [linux]
     - xorg-libxau                        # [linux]
-    - make                               # [linux]
+    - make                               # [unix]
   host:
     - tk
   run:
