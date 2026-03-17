@@ -1,0 +1,59 @@
+schema_version: 1
+
+context:
+  version: "2.10"
+
+package:
+  name: tktable
+  version: "${{ version }}"
+
+source:
+  url: http://downloads.sourceforge.net/project/tktable/tktable/${{ version }}/Tktable${{ version }}.tar.gz
+  sha256: c335117fa1be45fe4d3032e96fd4b4641fff6a4f8467878608dabed11198a4cb
+  patches:
+    - 0001-Remove-hardcoded-libs.patch
+    - 0002-Fix-incompatible-function-pointer-types-add-CONST86.patch
+    - 0003-Fix-implicit-function-declaration-for-panic-on-macOS.patch
+
+build:
+  number: 8
+
+requirements:
+  build:
+    - ${{ stdlib('c') }}
+    - ${{ compiler('c') }}
+    - if: linux
+      then:
+        - libxcb
+        - xorg-libxau
+    - if: unix
+      then: make
+  host:
+    - tk
+    - if: linux
+      then:
+        - xorg-xorgproto
+        - xorg-libx11
+  run:
+    - tk
+
+tests:
+  - script:
+      - if: linux
+        then: echo "exit [catch {package require -exact Tktable ${{ version }} }]" | xvfb-run tclsh
+      - if: not (linux or win)
+        then: echo "exit [catch {package require -exact Tktable ${{ version }} }]" | tclsh
+      - if: win
+        then: echo exit [catch {package require -exact Tktable ${{ version }} }] | tclsh
+
+about:
+  license: TCL
+  license_file: license.txt
+  summary: Tktable is a 2D editable table widget
+  homepage: http://www.tcl.tk/
+  documentation: https://core.tcl.tk/jenglish/gutter/packages/tktable.html
+
+extra:
+  recipe-maintainers:
+    - fhoehle
+    - xhochy
