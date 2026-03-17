@@ -13,19 +13,19 @@ source:
     - 0003-Fix-implicit-function-declaration-for-panic-on-macOS.patch
 
 build:
-  number: 7
+  number: 8
 
 requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - {{ cdt('libx11-devel') }}          # [linux]
     - libxcb                             # [linux]
     - xorg-libxau                        # [linux]
     - make                               # [unix]
   host:
     - tk
+    - xorg-xorgproto                     # [linux]
+    - xorg-libx11                        # [linux]
   run:
     - tk
 
