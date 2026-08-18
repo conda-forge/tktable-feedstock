@@ -14,9 +14,10 @@ source:
     - 0001-Remove-hardcoded-libs.patch
     - 0002-Fix-incompatible-function-pointer-types-add-CONST86.patch
     - 0003-Fix-implicit-function-declaration-for-panic-on-macOS.patch
+    - 0004-Rename-bool-variable-reserved-as-a-keyword-in-C23.patch
 
 build:
-  number: 8
+  number: 9
 
 requirements:
   build:
@@ -29,7 +30,7 @@ requirements:
     - if: unix
       then: make
   host:
-    - tk
+    - tk 8.6.* # tktable 2.10 is not compatible with tk 9
     - if: linux
       then:
         - xorg-xorgproto

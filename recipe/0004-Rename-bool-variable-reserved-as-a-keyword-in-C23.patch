@@ -1,0 +1,45 @@
+From c9a517dc61d5ccb32dd7eefbf15c80cc59005611 Mon Sep 17 00:00:00 2001
+From: velonica0 <like@mail.nankai.edu.cn>
+Date: Thu, 13 Aug 2026 18:34:23 -0700
+Subject: [PATCH] Rename bool variable, reserved as a keyword in C23
+
+GCC 15 defaults to -std=gnu23, where bool is a reserved keyword and can
+no longer be used as an identifier:
+
+  ./generic/tkTable.c:3798:15: error: expected identifier or '(' before 'bool'
+      3798 |     int code, bool;
+
+Rename the local variable in TableValidateChange to boolVal.
+---
+ generic/tkTable.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/generic/tkTable.c b/generic/tkTable.c
+index 9392b8f..c9701f3 100644
+--- a/generic/tkTable.c
++++ b/generic/tkTable.c
+@@ -3795,7 +3795,7 @@ TableValidateChange(tablePtr, r, c, old, new, index)
+      int index;			/* index of insert/delete, -1 otherwise */
+ {
+     register Tcl_Interp *interp = tablePtr->interp;
+-    int code, bool;
++    int code, boolVal;
+     Tk_RestrictProc *rstrct;
+     ClientData cdata;
+     Tcl_DString script;
+@@ -3834,13 +3834,13 @@ TableValidateChange(tablePtr, r, c, old, new, index)
+ 	Tcl_BackgroundError(interp);
+ 	code = TCL_ERROR;
+     } else if (Tcl_GetBooleanFromObj(interp, Tcl_GetObjResult(interp),
+-				     &bool) != TCL_OK) {
++				     &boolVal) != TCL_OK) {
+ 	Tcl_AddErrorInfo(interp,
+ 			 "\n\tboolean not returned by validation command");
+ 	Tcl_BackgroundError(interp);
+ 	code = TCL_ERROR;
+     } else {
+-	code = (bool) ? TCL_OK : TCL_BREAK;
++	code = (boolVal) ? TCL_OK : TCL_BREAK;
+     }
+     Tcl_SetObjResult(interp, Tcl_NewObj());
+ 
