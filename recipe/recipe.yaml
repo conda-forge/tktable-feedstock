@@ -30,7 +30,7 @@ requirements:
     - if: unix
       then: make
   host:
-    - tk
+    - tk 8.6.* # tktable 2.10 is not compatible with tk 9
     - if: linux
       then:
         - xorg-xorgproto
