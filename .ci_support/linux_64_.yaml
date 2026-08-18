@@ -16,5 +16,3 @@ libxcb:
 - '1'
 target_platform:
 - linux-64
-tk:
-- '8.6'
