@@ -17,7 +17,7 @@ source:
     - 0004-Rename-bool-variable-reserved-as-a-keyword-in-C23.patch
 
 build:
-  number: 9
+  number: 10
 
 requirements:
   build:
