@@ -1,4 +1,6 @@
-if "%ARCH%"=="32" (
+if "%target_platform%"=="win-arm64" (
+  set MACHINE="ARM64"
+) else if "%ARCH%"=="32" (
    set MACHINE="IX86"
    :: A different SDK is needed when build with VS 2017 and 2015
    :: http://wiki.tcl.tk/54819
@@ -29,4 +31,3 @@ nmake -f makefile.vc ^
   install
 if %ERRORLEVEL% GTR 0 exit 1
 popd
-
